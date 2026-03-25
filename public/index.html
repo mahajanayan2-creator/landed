@@ -126,9 +126,9 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
   </div>
 </nav>
 <section class="hero">
-  <div class="hero-eyebrow">✦ Researches your target company in real time</div>
+  <div class="hero-eyebrow">✦ Tailored to your target company</div>
   <h1>Applications that make<br>hiring managers <em>stop scrolling</em></h1>
-  <p class="hero-sub">Guided questions, live company research, and expert-level writing — not generic AI filler.</p>
+  <p class="hero-sub">Guided questions, deep company knowledge, and expert-level writing — not generic AI filler.</p>
   <div class="hero-cta">
     <a href="#app" class="btn-dark">Build my CV free</a>
     <a href="#pricing" class="btn-outline">Cover letter packs from £9.99</a>
@@ -163,7 +163,7 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
       <button class="out-btn" onclick="startOver()">Start over</button>
     </div>
     <div class="upsell-box" id="upsell-box">
-      <p><strong>Need cover letters?</strong> Each job deserves a tailored letter written with live research. Packs from £9.99.</p>
+      <p><strong>Need cover letters?</strong> Each job deserves a tailored letter. Packs from £9.99.</p>
       <button class="upsell-cta" onclick="setMode('cover');startOver();">Get cover letter packs</button>
     </div>
   </div>
@@ -180,7 +180,7 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
       <div class="p-period">one application</div>
       <ul class="p-features">
         <li>Tailored to the specific role</li>
-        <li>Live company research</li>
+        <li>Deep company knowledge</li>
         <li>Tone matched to you</li>
         <li>Plain text download</li>
       </ul>
@@ -193,7 +193,7 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
       <div class="p-period">£2 each — save £5</div>
       <ul class="p-features">
         <li>5 tailored cover letters</li>
-        <li>Live research on each company</li>
+        <li>Deep research on each company</li>
         <li>Valid for 60 days</li>
         <li>PDF + Word export</li>
         <li>ATS keyword optimisation</li>
@@ -206,7 +206,7 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
       <div class="p-period">£1.70 each — best value</div>
       <ul class="p-features">
         <li>10 tailored cover letters</li>
-        <li>Live research on each company</li>
+        <li>Deep research on each company</li>
         <li>Valid for 90 days</li>
         <li>PDF + Word export</li>
         <li>Priority generation</li>
@@ -224,7 +224,8 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
   <span>hello@landed.co.uk</span>
 </footer>
 <script>
-let mode='cv',step=0,answers={},uploadedText='',questions=[];
+let mode='cv',step=0,answers={},uploadedText='',questions=[],userEmail='';
+
 const cvQuestions=[
   {id:'upload',step:'Optional start',label:'Do you have an existing CV we can improve?',hint:'Upload it and we\'ll use it as a foundation. Or skip to build from scratch.',type:'upload'},
   {id:'name',step:'About you',label:'What\'s your full name?',hint:'',type:'text',placeholder:'e.g. Sarah Johnson'},
@@ -237,10 +238,11 @@ const cvQuestions=[
   {id:'skills',step:'Skills',label:'What are your top skills — tools, software, methodologies?',hint:'Think about what you use every day and what the target role requires.',type:'text',placeholder:'e.g. Python, SQL, Tableau, Agile, stakeholder management, Figma, bid writing'},
   {id:'tone',step:'Writing style',label:'How should your CV sound?',hint:'This shapes the language and feel of everything.',type:'options',options:['Corporate & formal','Confident & direct','Warm & personable','Creative & distinctive','Technical & precise']}
 ];
+
 const coverQuestions=[
   {id:'upload',step:'Optional start',label:'Have an existing CV or cover letter we can build from?',hint:'Upload it and we\'ll extract your background automatically.',type:'upload'},
   {id:'name',step:'About you',label:'Your full name',hint:'',type:'text',placeholder:'e.g. James Okafor'},
-  {id:'company',step:'The company',label:'Which company are you applying to?',hint:'We\'ll draw on everything we know about them — values, culture, recent news — to make the letter feel genuinely written for them.',type:'text',placeholder:'e.g. Goldman Sachs, Unilever, a boutique studio called Pixel & Co'},
+  {id:'company',step:'The company',label:'Which company are you applying to?',hint:'We\'ll draw on everything we know about them — values, culture, what they look for — to make the letter feel genuinely written for them.',type:'text',placeholder:'e.g. Goldman Sachs, Unilever, a boutique studio called Pixel & Co'},
   {id:'role',step:'The role',label:'What role are you applying for?',hint:'',type:'text',placeholder:'e.g. Product Designer, Band 6 Nurse, Junior Copywriter'},
   {id:'job_desc',step:'Job details',label:'Paste the job description or key requirements.',hint:'The more you give, the more we can mirror their exact language — which is what gets you through ATS filters and catches a recruiter\'s eye.',type:'textarea',placeholder:'Paste the full JD, or summarise: "3+ years in X, must have Y, values Z culture..."'},
   {id:'why_them',step:'Your motivation',label:'Why do you want to work at this specific company?',hint:'Even one genuine reason makes a huge difference. Vague enthusiasm is easy to spot — specificity isn\'t.',type:'textarea',placeholder:'e.g. Their pivot to B-corp status aligns with values I hold strongly. I\'ve also followed their product thinking closely...'},
@@ -248,8 +250,9 @@ const coverQuestions=[
   {id:'background',step:'Your background',label:'Brief overview of your experience and background',hint:'',type:'textarea',placeholder:'e.g. 4 years in digital marketing, started as coordinator at a startup, now Senior Manager at a FTSE 250. Strong in data-driven campaigns...'},
   {id:'tone',step:'Tone',label:'How should this letter sound?',hint:'',type:'options',options:['Professional & formal','Confident & direct','Warm & personable','Passionate & driven','Concise & punchy']}
 ];
+
 function setMode(m){mode=m;document.querySelectorAll('.mode-btn').forEach((b,i)=>b.classList.toggle('active',['cv','cover'][i]===m));startOver();}
-function startOver(){step=0;answers={};uploadedText='';questions=mode==='cv'?cvQuestions:coverQuestions;document.getElementById('output-section').style.display='none';renderStep();}
+function startOver(){step=0;answers={};uploadedText='';userEmail='';questions=mode==='cv'?cvQuestions:coverQuestions;document.getElementById('output-section').style.display='none';renderStep();}
 function renderStep(){const pct=Math.round((step/questions.length)*100);document.getElementById('progress').style.width=Math.max(pct,5)+'%';document.getElementById('status').textContent='';if(step>=questions.length){showGenerate();return;}const q=questions[step];document.getElementById('q-container').innerHTML=buildQ(q);if(q.type==='upload')setupUpload();}
 function buildQ(q){let inp='';if(q.type==='text'){inp=`<input class="q-input" id="qa" type="text" placeholder="${q.placeholder||''}" value="${answers[q.id]||''}">`;}else if(q.type==='textarea'){inp=`<textarea class="q-input" id="qa" placeholder="${q.placeholder||''}">${answers[q.id]||''}</textarea>`;}else if(q.type==='options'){inp=`<div class="q-options">${q.options.map(o=>`<button class="q-opt${answers[q.id]===o?' sel':''}" onclick="selOpt(this,'${o}')">${o}</button>`).join('')}</div>`;}else if(q.type==='upload'){inp=`<div class="upload-zone" id="uz"><input type="file" accept=".txt,.pdf,.doc,.docx" onchange="handleFile(event)"><svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg><div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>.txt, .pdf, .doc accepted</div></div><div id="fstatus"></div>`;}return `<div class="q-card"><div class="q-step">Step ${step+1} of ${questions.length} — ${q.step}</div><div class="q-label">${q.label}</div>${q.hint?`<div class="q-hint">${q.hint}</div>`:''} ${inp}</div><div class="q-nav">${step>0?`<button class="btn-back" onclick="goBack()">Back</button>`:'<span></span>'}<button class="btn-next" onclick="nextStep()">${step===questions.length-1?'Generate ✦':'Continue'}</button></div>`;}
 function selOpt(el,val){el.closest('.q-options').querySelectorAll('.q-opt').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');answers[questions[step].id]=val;}
@@ -258,12 +261,107 @@ function goBack(){if(step>0){step--;renderStep();}}
 function setupUpload(){const uz=document.getElementById('uz');if(!uz)return;uz.addEventListener('dragover',e=>{e.preventDefault();uz.classList.add('drag');});uz.addEventListener('dragleave',()=>uz.classList.remove('drag'));uz.addEventListener('drop',e=>{e.preventDefault();uz.classList.remove('drag');if(e.dataTransfer.files[0])processFile(e.dataTransfer.files[0]);});}
 function handleFile(e){if(e.target.files[0])processFile(e.target.files[0]);}
 function processFile(file){const s=document.getElementById('fstatus');if(file.type==='text/plain'){const r=new FileReader();r.onload=e=>{uploadedText=e.target.result;s.innerHTML=`<div class="file-attached">✓ &nbsp;<strong>${file.name}</strong> — we'll use this as your starting point</div>`;};r.readAsText(file);}else{uploadedText=`[User uploaded: ${file.name} — extract all relevant career details]`;s.innerHTML=`<div class="file-attached">✓ &nbsp;<strong>${file.name}</strong> attached</div>`;}}
-function showGenerate(){const isCover=mode==='cover';document.getElementById('q-container').innerHTML=`<div class="q-card" style="text-align:center;padding:2rem;"><div style="font-size:13px;color:var(--muted);margin-bottom:6px;">Ready</div><div style="font-family:var(--serif);font-size:1.4rem;margin-bottom:.5rem;">Your ${isCover?'cover letter':'CV'} is ready to write</div><div style="font-size:13px;color:var(--muted);">${isCover&&answers.company?`We'll draw on everything we know about <strong>${answers.company}</strong> to make this letter feel genuinely written for them.`:"We'll craft something concise, achievement-led, and tailored to your target role."}</div></div><p class="gen-note">${isCover?'This is a free preview. Purchase a pack below for your full letters.':'Your CV is completely free.'}</p><button class="gen-btn" onclick="generate()" id="gen-btn">Write my ${isCover?'cover letter':'CV'} →</button>`;document.getElementById('progress').style.width='100%';}
-async function generate(){const btn=document.getElementById('gen-btn');if(btn)btn.disabled=true;const isCover=mode==='cover';document.getElementById('status').textContent=isCover?`Researching ${answers.company||'the company'} and writing your letter…`:'Writing your CV…';try{const res=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:isCover?buildCoverPrompt():buildCVPrompt(),mode,company:answers.company||''})});if(!res.ok)throw new Error();const data=await res.json();showOutput(data.text);}catch(e){document.getElementById('status').textContent='Something went wrong — please try again.';if(btn)btn.disabled=false;}}
+
+function showGenerate(){
+  const isCover=mode==='cover';
+  document.getElementById('progress').style.width='100%';
+  if(isCover){
+    document.getElementById('q-container').innerHTML=`
+      <div class="q-card" style="text-align:center;padding:2rem;">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:6px;">Almost there</div>
+        <div style="font-family:var(--serif);font-size:1.4rem;margin-bottom:.5rem;">Enter your email to continue</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:1.25rem;">We use this to track your cover letter credits.</div>
+        <input class="q-input" id="email-input" type="email" placeholder="your@email.com" style="max-width:320px;margin:0 auto 1rem;display:block;">
+      </div>
+      <div class="q-nav"><button class="btn-back" onclick="goBack()">Back</button><button class="btn-next" onclick="checkCredits()">Continue</button></div>`;
+  } else {
+    document.getElementById('q-container').innerHTML=`
+      <div class="q-card" style="text-align:center;padding:2rem;">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:6px;">Ready</div>
+        <div style="font-family:var(--serif);font-size:1.4rem;margin-bottom:.5rem;">Your CV is ready to write</div>
+        <div style="font-size:13px;color:var(--muted);">We'll craft something concise, achievement-led, and tailored to your target role.</div>
+      </div>
+      <p class="gen-note">Your CV is completely free.</p>
+      <button class="gen-btn" onclick="generate()" id="gen-btn">Write my CV →</button>`;
+  }
+}
+
+async function checkCredits(){
+  const emailInput=document.getElementById('email-input');
+  if(!emailInput||!emailInput.value.includes('@')){document.getElementById('status').textContent='Please enter a valid email address.';return;}
+  userEmail=emailInput.value.trim().toLowerCase();
+  document.getElementById('status').textContent='Checking your credits…';
+  try{
+    const res=await fetch('/api/check-credits',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:userEmail})});
+    const data=await res.json();
+    document.getElementById('status').textContent='';
+    if(data.credits>0){
+      document.getElementById('q-container').innerHTML=`
+        <div class="q-card" style="text-align:center;padding:2rem;">
+          <div style="font-size:13px;color:var(--green);margin-bottom:6px;">✓ ${data.credits} cover letter credit${data.credits!==1?'s':''} available</div>
+          <div style="font-family:var(--serif);font-size:1.4rem;margin-bottom:.5rem;">Your cover letter is ready to write</div>
+          <div style="font-size:13px;color:var(--muted);">We'll draw on everything we know about ${answers.company||'the company'} to make this feel genuinely written for them.</div>
+        </div>
+        <p class="gen-note">1 credit will be used.</p>
+        <button class="gen-btn" onclick="generate()" id="gen-btn">Write my cover letter →</button>`;
+    } else {
+      document.getElementById('q-container').innerHTML=`
+        <div class="q-card" style="text-align:center;padding:2rem;">
+          <div style="font-size:13px;color:var(--muted);margin-bottom:6px;">No credits found for ${userEmail}</div>
+          <div style="font-family:var(--serif);font-size:1.4rem;margin-bottom:.5rem;">Purchase a pack to generate cover letters</div>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:1.5rem;">Your CV is always free. Cover letters require a pack — starting at £2.99.</div>
+          <button class="btn-dark" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">See cover letter packs →</button>
+        </div>`;
+    }
+  }catch(e){document.getElementById('status').textContent='Something went wrong. Please try again.';}
+}
+
+async function generate(){
+  const btn=document.getElementById('gen-btn');
+  if(btn)btn.disabled=true;
+  const isCover=mode==='cover';
+  document.getElementById('status').textContent=isCover?`Writing your cover letter for ${answers.company||'the company'}…`:'Writing your CV…';
+  try{
+    const body={prompt:isCover?buildCoverPrompt():buildCVPrompt(),mode,company:answers.company||''};
+    if(isCover)body.email=userEmail;
+    const res=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const data=await res.json();
+    if(!res.ok){
+      if(data.error==='no_credits'){
+        document.getElementById('status').textContent='';
+        document.getElementById('q-container').innerHTML=`<div class="q-card" style="text-align:center;padding:2rem;"><div style="font-family:var(--serif);font-size:1.4rem;margin-bottom:.5rem;">No credits remaining</div><div style="font-size:13px;color:var(--muted);margin-bottom:1.5rem;">Purchase another pack to keep generating.</div><button class="btn-dark" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Buy more credits →</button></div>`;
+        if(btn)btn.disabled=false;return;
+      }
+      throw new Error(data.error||'Server error');
+    }
+    showOutput(data.text,data.creditsRemaining);
+  }catch(e){
+    document.getElementById('status').textContent='Something went wrong — please try again.';
+    if(btn)btn.disabled=false;
+  }
+}
+
 function buildCVPrompt(){const a=answers,up=uploadedText?`\n\nEXISTING CV TO IMPROVE:\n${uploadedText}`:'';return `You are a world-class CV writer with 20 years of experience placing candidates at top companies. Write an exceptional CV that is genuinely better than any competitor tool. Quality is everything.\n\nCANDIDATE:\nName: ${a.name||'Not provided'}\nTarget role: ${a.target_role||'Not specified'}\nExperience level: ${a.experience_years||'Not specified'}\nMost recent role: ${a.current_role||'Not specified'}\nProudest achievement: ${a.proudest||'Not specified'}\nOther experience: ${a.other_experience||'Not specified'}\nEducation: ${a.education||'Not specified'}\nKey skills: ${a.skills||'Not specified'}\nTone: ${a.tone||'Confident & direct'}\n${up}\n\nINSTRUCTIONS:\n1. Open with a punchy 3-line PROFESSIONAL PROFILE. No cliches.\n2. Lead every bullet with a strong action verb. Include numbers and outcomes.\n3. Cut every vague phrase unless backed by evidence.\n4. Tailor ruthlessly to ${a.target_role||'the target role'}.\n5. Sections: PROFESSIONAL PROFILE | EXPERIENCE | EDUCATION | SKILLS\n6. Plain text only. No markdown, no asterisks.\n7. Must feel written by a skilled human career coach, not AI.`;}
-function buildCoverPrompt(){const a=answers,up=uploadedText?`\n\nUPLOADED DOCUMENT:\n${uploadedText}`:'';return `You are a world-class cover letter writer. Write a cover letter for ${a.name||'the candidate'} applying to ${a.company||'the company'} for ${a.role||'the position'}. Must stand out from generic AI letters.\n\nCOMPANY: ${a.company||'Not specified'}\nUse everything you know about ${a.company||'this company'} — values, culture, recent news — to make this feel specifically written for them.\n\nROLE: ${a.role||'Not specified'}\nJOB REQUIREMENTS: ${a.job_desc||'Not specified'}\nWHY THIS COMPANY: ${a.why_them||'Not specified'}\nSTRONGEST CASE: ${a.best_achievement||'Not specified'}\nBACKGROUND: ${a.background||'Not specified'}\nTONE: ${a.tone||'Confident & direct'}\n${up}\n\nSTRUCTURE:\n- Para 1: Compelling hook + specific reason for this company. NOT "I am writing to apply".\n- Para 2: Strongest achievement tied to what this role needs.\n- Para 3: Supporting skills/experience + cultural fit.\n- Para 4: Confident specific close.\n\nRULES: 270-340 words. Mirror job description language. Zero cliches. Plain text only. Must sound like a sharp human wrote it.`;}
-function showOutput(text){document.getElementById('status').textContent='';document.getElementById('q-container').innerHTML='';const s=document.getElementById('output-section');s.style.display='block';document.getElementById('out-label').textContent=mode==='cv'?'Your CV':'Your cover letter';document.getElementById('out-box').textContent=text;if(mode==='cover'){document.getElementById('quality-msg').textContent=`Written using everything we know about ${answers.company||'the company'} and tailored to the role.`;document.getElementById('upsell-box').innerHTML=`<p><strong>Need more letters?</strong> Packs of 5 (£9.99) or 10 (£16.99) — researched and tailored every time.</p><button class="upsell-cta" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View packs</button>`;}s.scrollIntoView({behavior:'smooth',block:'start'});}
+
+function buildCoverPrompt(){const a=answers,up=uploadedText?`\n\nUPLOADED DOCUMENT:\n${uploadedText}`:'';return `You are a world-class cover letter writer. Write a cover letter for ${a.name||'the candidate'} applying to ${a.company||'the company'} for ${a.role||'the position'}. Must stand out from generic AI letters.\n\nCOMPANY: ${a.company||'Not specified'}\nUse everything you know about ${a.company||'this company'} — values, culture, what they look for in candidates — to make this feel specifically written for them.\n\nROLE: ${a.role||'Not specified'}\nJOB REQUIREMENTS: ${a.job_desc||'Not specified'}\nWHY THIS COMPANY: ${a.why_them||'Not specified'}\nSTRONGEST CASE: ${a.best_achievement||'Not specified'}\nBACKGROUND: ${a.background||'Not specified'}\nTONE: ${a.tone||'Confident & direct'}\n${up}\n\nSTRUCTURE:\n- Para 1: Compelling hook + specific reason for this company. NOT "I am writing to apply".\n- Para 2: Strongest achievement tied to what this role needs.\n- Para 3: Supporting skills/experience + cultural fit.\n- Para 4: Confident specific close.\n\nRULES: 270-340 words. Mirror job description language. Zero cliches. Plain text only. Must sound like a sharp human wrote it.`;}
+
+function showOutput(text,creditsLeft){
+  document.getElementById('status').textContent='';
+  document.getElementById('q-container').innerHTML='';
+  const s=document.getElementById('output-section');
+  s.style.display='block';
+  document.getElementById('out-label').textContent=mode==='cv'?'Your CV':'Your cover letter';
+  document.getElementById('out-box').textContent=text;
+  if(mode==='cover'){
+    document.getElementById('quality-msg').textContent=`Written using everything we know about ${answers.company||'the company'} and tailored to the role.`;
+    const creditsMsg=creditsLeft>0?`You have <strong>${creditsLeft} credit${creditsLeft!==1?'s':''}</strong> remaining.`:`You have no credits remaining.`;
+    document.getElementById('upsell-box').innerHTML=`<p>${creditsMsg} Need more? Packs of 5 (£9.99) or 10 (£16.99).</p><button class="upsell-cta" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Buy more credits</button>`;
+  }
+  s.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
 function copyOut(){navigator.clipboard.writeText(document.getElementById('out-box').textContent).then(()=>{document.getElementById('status').textContent='Copied!';setTimeout(()=>document.getElementById('status').textContent='',2000);}).catch(()=>alert('Please select and copy the text manually.'));}
+
 function handlePurchase(pack){
   const links={
     'single':'https://buy.stripe.com/3cIaEX6Rz54x2Xtgy08AE00',
@@ -272,6 +370,7 @@ function handlePurchase(pack){
   };
   window.open(links[pack],'_blank');
 }
+
 startOver();
 </script>
 </body>
