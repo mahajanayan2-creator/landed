@@ -1,58 +1,271 @@
-Landed
-Create
-Pricing
-Start free
-✦ Researches your target company in real time
-Applications that make hiring managers stop scrolling
-Guided questions, live company research, and expert-level writing — not generic AI filler.
-Build my CV free
-Cover letter packs from £9.99
-94%
-interview callback rate
-8,200+
-applications written
-4.9★
-from 1,400 reviews
-48hr
-average time to interview
-Let's build your application
-We ask smart questions so nothing important gets missed — takes about 3 minutes
-CV / Resume
-Cover Letter
-
-
-
-Cover letter packs
-Your CV is always free. Cover letters are where the real value is — every job needs a fresh, tailored one.
-SINGLE LETTER
-£2.99
-one application
-	•	Tailored to the specific role
-	•	Live company research
-	•	Tone matched to you
-	•	Plain text download
-Get started
-Most popular
-5-PACK
-£9.99
-£2 each — save £5
-	•	5 tailored cover letters
-	•	Live research on each company
-	•	Valid for 60 days
-	•	PDF + Word export
-	•	ATS keyword optimisation
-Buy 5-pack
-10-PACK
-£16.99
-£1.70 each — best value
-	•	10 tailored cover letters
-	•	Live research on each company
-	•	Valid for 90 days
-	•	PDF + Word export
-	•	Priority generation
-	•	1 free expert review
-Buy 10-pack
-Want a human expert to review your CV or letter? Expert review — £39
-Landed
-© 2025 Landed. Powered by Claude AI.
-hello@landed.co.uk
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Landed — Applications that get you hired</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#141210;
+  --paper:#faf8f5;
+  --surface:#f2ede6;
+  --border:#e4ddd3;
+  --gold:#b8860b;
+  --gold-pale:#fdf6e3;
+  --muted:#8c8278;
+  --white:#ffffff;
+  --green:#1a6b3c;
+  --green-pale:#edf7f1;
+  --serif:Georgia,serif;
+  --sans:system-ui,sans-serif;
+  --r:10px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.6;font-weight:300;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;border-bottom:1px solid var(--border);background:var(--paper);position:sticky;top:0;z-index:200;}
+.logo{font-family:var(--serif);font-size:1.6rem;letter-spacing:-0.02em;font-weight:600;}
+.logo em{color:var(--gold);font-style:italic;}
+.nav-r{display:flex;gap:1.5rem;align-items:center;}
+.nav-r a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:400;transition:color .2s;}
+.nav-r a:hover{color:var(--ink);}
+.nav-pill{background:var(--ink);color:var(--white)!important;padding:7px 18px;border-radius:40px;font-size:13px!important;font-weight:500!important;}
+.hero{max-width:900px;margin:0 auto;padding:5rem 2rem 3rem;text-align:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--gold-pale);border:1px solid #e8d88a;border-radius:40px;padding:5px 14px;font-size:12px;color:var(--gold);font-weight:500;letter-spacing:0.04em;margin-bottom:1.5rem;}
+.hero h1{font-family:var(--serif);font-size:clamp(2.6rem,5.5vw,4.2rem);line-height:1.08;letter-spacing:-0.025em;margin-bottom:1.2rem;font-weight:600;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{color:var(--muted);font-size:1.05rem;max-width:500px;margin:0 auto 2.5rem;font-weight:300;}
+.hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.btn-dark{background:var(--ink);color:var(--white);border:none;padding:13px 30px;border-radius:40px;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--sans);transition:opacity .15s,transform .15s;text-decoration:none;display:inline-block;}
+.btn-dark:hover{opacity:.85;transform:translateY(-1px);}
+.btn-outline{background:transparent;color:var(--ink);border:1px solid var(--border);padding:13px 30px;border-radius:40px;font-size:14px;font-weight:400;cursor:pointer;font-family:var(--sans);transition:background .15s;text-decoration:none;display:inline-block;}
+.btn-outline:hover{background:var(--surface);}
+.trust{display:flex;justify-content:center;gap:3rem;padding:2rem;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.trust-item{text-align:center;}
+.trust-item strong{display:block;font-family:var(--serif);font-size:1.8rem;font-weight:600;}
+.trust-item span{font-size:12px;color:var(--muted);}
+.app{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:4rem 2rem;}
+.app-inner{max-width:820px;margin:0 auto;}
+.app-title{font-family:var(--serif);font-size:1.9rem;font-weight:600;text-align:center;margin-bottom:.4rem;}
+.app-sub{text-align:center;color:var(--muted);font-size:13px;margin-bottom:2rem;}
+.mode-row{display:flex;gap:8px;justify-content:center;margin-bottom:2rem;flex-wrap:wrap;}
+.mode-btn{padding:8px 18px;border:1px solid var(--border);background:var(--white);border-radius:40px;font-family:var(--sans);font-size:13px;color:var(--muted);cursor:pointer;transition:all .2s;}
+.mode-btn.active{background:var(--ink);color:var(--white);border-color:var(--ink);font-weight:500;}
+.progress-bar{height:3px;background:var(--border);border-radius:3px;margin-bottom:2rem;overflow:hidden;}
+.progress-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s ease;}
+.q-card{background:var(--paper);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;margin-bottom:1rem;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.q-step{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--gold);margin-bottom:6px;}
+.q-label{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:4px;}
+.q-hint{font-size:12px;color:var(--muted);margin-bottom:12px;}
+.q-input{width:100%;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-family:var(--sans);font-size:14px;color:var(--ink);outline:none;transition:border-color .2s;font-weight:300;}
+.q-input:focus{border-color:var(--gold);}
+textarea.q-input{resize:vertical;min-height:90px;line-height:1.6;}
+.q-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.q-opt{padding:7px 16px;border:1px solid var(--border);border-radius:40px;font-size:13px;cursor:pointer;background:var(--white);color:var(--muted);transition:all .15s;font-family:var(--sans);}
+.q-opt.sel{background:var(--ink);color:var(--white);border-color:var(--ink);}
+.upload-zone{border:1.5px dashed var(--border);border-radius:var(--r);padding:2rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative;}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--gold);background:var(--gold-pale);}
+.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.upload-icon{width:32px;height:32px;margin:0 auto 10px;opacity:.4;}
+.upload-text{font-size:13px;color:var(--muted);}
+.upload-text strong{color:var(--ink);font-weight:500;}
+.file-attached{display:flex;align-items:center;gap:10px;background:var(--green-pale);border:1px solid #a3d4b8;border-radius:8px;padding:10px 14px;font-size:13px;color:var(--green);margin-top:8px;}
+.q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;}
+.btn-next{background:var(--ink);color:var(--white);border:none;padding:11px 28px;border-radius:40px;font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;transition:opacity .15s;}
+.btn-next:hover{opacity:.85;}
+.btn-next:disabled{opacity:.35;cursor:not-allowed;}
+.btn-back{background:transparent;color:var(--muted);border:none;font-family:var(--sans);font-size:13px;cursor:pointer;padding:8px 0;}
+.btn-back:hover{color:var(--ink);}
+.gen-btn{width:100%;padding:16px;background:var(--ink);color:var(--white);border:none;border-radius:40px;font-family:var(--serif);font-size:1.15rem;font-style:italic;cursor:pointer;transition:opacity .2s,transform .15s;font-weight:400;}
+.gen-btn:hover:not(:disabled){opacity:.85;transform:translateY(-1px);}
+.gen-btn:disabled{opacity:.35;cursor:not-allowed;transform:none;}
+.gen-note{text-align:center;font-size:12px;color:var(--muted);margin-bottom:10px;}
+.output-section{display:none;margin-top:2rem;animation:fadeUp .4s ease;}
+.out-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px;}
+.out-box{background:var(--paper);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;font-size:14px;line-height:1.9;white-space:pre-wrap;color:var(--ink);font-weight:300;font-family:Georgia,serif;}
+.out-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.out-btn{padding:9px 20px;border:1px solid var(--border);background:var(--white);border-radius:40px;font-size:13px;cursor:pointer;font-family:var(--sans);color:var(--ink);transition:background .15s;}
+.out-btn:hover{background:var(--surface);}
+.quality-note{background:var(--green-pale);border:1px solid #a3d4b8;border-radius:var(--r);padding:1rem 1.25rem;font-size:13px;color:var(--green);margin-top:10px;display:flex;align-items:flex-start;gap:10px;}
+.upsell-box{background:var(--gold-pale);border:1px solid #e8d88a;border-radius:var(--r);padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:12px;flex-wrap:wrap;}
+.upsell-box p{font-size:13px;color:#7a6010;}
+.upsell-box p strong{font-weight:500;}
+.upsell-cta{background:var(--ink);color:var(--white);border:none;padding:9px 22px;border-radius:40px;font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;}
+.pricing{max-width:900px;margin:0 auto;padding:5rem 2rem;}
+.pricing h2{font-family:var(--serif);font-size:2.2rem;text-align:center;margin-bottom:.4rem;font-weight:600;}
+.pricing-sub{text-align:center;color:var(--muted);font-size:13px;margin-bottom:3rem;}
+.p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.p-card{border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;background:var(--white);}
+.p-card.best{background:var(--ink);color:var(--white);border-color:var(--ink);}
+.p-tag{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:10px;}
+.p-card.best .p-tag{color:rgba(255,255,255,.5);}
+.p-price{font-family:var(--serif);font-size:2.4rem;font-weight:600;line-height:1;}
+.p-period{font-size:12px;color:var(--muted);margin-bottom:1rem;}
+.p-card.best .p-period{color:rgba(255,255,255,.5);}
+.p-features{font-size:13px;color:var(--muted);line-height:2;}
+.p-card.best .p-features{color:rgba(255,255,255,.7);}
+.p-features li{list-style:none;padding-left:16px;position:relative;}
+.p-features li::before{content:'✓';position:absolute;left:0;color:var(--gold);font-size:11px;}
+.p-btn{display:block;text-align:center;padding:11px;border-radius:40px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--sans);margin-top:1.5rem;text-decoration:none;border:1px solid var(--border);background:transparent;color:var(--ink);transition:all .15s;}
+.p-btn:hover{background:var(--surface);}
+.p-card.best .p-btn{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+.best-badge{display:inline-block;background:var(--gold);color:var(--ink);font-size:10px;font-weight:500;padding:2px 9px;border-radius:40px;margin-bottom:8px;}
+.status{font-size:13px;color:var(--muted);text-align:center;min-height:18px;margin:6px 0;}
+footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted);flex-wrap:wrap;gap:1rem;}
+@media(max-width:640px){nav{padding:1rem 1.25rem;}.p-grid{grid-template-columns:1fr;}.hero{padding:3rem 1.25rem 2rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo"><em>Landed</em></div>
+  <div class="nav-r">
+    <a href="#app">Create</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#app" class="nav-pill">Start free</a>
+  </div>
+</nav>
+<section class="hero">
+  <div class="hero-eyebrow">✦ Researches your target company in real time</div>
+  <h1>Applications that make<br>hiring managers <em>stop scrolling</em></h1>
+  <p class="hero-sub">Guided questions, live company research, and expert-level writing — not generic AI filler.</p>
+  <div class="hero-cta">
+    <a href="#app" class="btn-dark">Build my CV free</a>
+    <a href="#pricing" class="btn-outline">Cover letter packs from £9.99</a>
+  </div>
+</section>
+<div class="trust">
+  <div class="trust-item"><strong>94%</strong><span>interview callback rate</span></div>
+  <div class="trust-item"><strong>8,200+</strong><span>applications written</span></div>
+  <div class="trust-item"><strong>4.9★</strong><span>from 1,400 reviews</span></div>
+  <div class="trust-item"><strong>48hr</strong><span>average time to interview</span></div>
+</div>
+<section class="app" id="app">
+<div class="app-inner">
+  <h2 class="app-title">Let's build your application</h2>
+  <p class="app-sub">We ask smart questions so nothing important gets missed — takes about 3 minutes</p>
+  <div class="mode-row">
+    <button class="mode-btn active" onclick="setMode('cv')">CV / Resume</button>
+    <button class="mode-btn" onclick="setMode('cover')">Cover Letter</button>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress" style="width:5%"></div></div>
+  <div id="q-container"></div>
+  <div class="status" id="status"></div>
+  <div class="output-section" id="output-section">
+    <div class="out-label" id="out-label">Your CV</div>
+    <div class="out-box" id="out-box"></div>
+    <div class="quality-note">
+      <span>✦</span>
+      <span id="quality-msg">Written using your specific background and tailored to your target role. Every line is intentional.</span>
+    </div>
+    <div class="out-actions">
+      <button class="out-btn" onclick="copyOut()">Copy text</button>
+      <button class="out-btn" onclick="startOver()">Start over</button>
+    </div>
+    <div class="upsell-box" id="upsell-box">
+      <p><strong>Need cover letters?</strong> Each job deserves a tailored letter written with live research. Packs from £9.99.</p>
+      <button class="upsell-cta" onclick="setMode('cover');startOver();">Get cover letter packs</button>
+    </div>
+  </div>
+</div>
+</section>
+<section id="pricing">
+<div class="pricing">
+  <h2>Cover letter packs</h2>
+  <p class="pricing-sub">Your CV is always free. Cover letters are where the real value is — every job needs a fresh, tailored one.</p>
+  <div class="p-grid">
+    <div class="p-card">
+      <div class="p-tag">Single letter</div>
+      <div class="p-price">£2.99</div>
+      <div class="p-period">one application</div>
+      <ul class="p-features">
+        <li>Tailored to the specific role</li>
+        <li>Live company research</li>
+        <li>Tone matched to you</li>
+        <li>Plain text download</li>
+      </ul>
+      <a href="#app" class="p-btn" onclick="setMode('cover')">Get started</a>
+    </div>
+    <div class="p-card best">
+      <div class="best-badge">Most popular</div>
+      <div class="p-tag">5-pack</div>
+      <div class="p-price">£9.99</div>
+      <div class="p-period">£2 each — save £5</div>
+      <ul class="p-features">
+        <li>5 tailored cover letters</li>
+        <li>Live research on each company</li>
+        <li>Valid for 60 days</li>
+        <li>PDF + Word export</li>
+        <li>ATS keyword optimisation</li>
+      </ul>
+      <a href="#" class="p-btn" onclick="handlePurchase('5pack')">Buy 5-pack</a>
+    </div>
+    <div class="p-card">
+      <div class="p-tag">10-pack</div>
+      <div class="p-price">£16.99</div>
+      <div class="p-period">£1.70 each — best value</div>
+      <ul class="p-features">
+        <li>10 tailored cover letters</li>
+        <li>Live research on each company</li>
+        <li>Valid for 90 days</li>
+        <li>PDF + Word export</li>
+        <li>Priority generation</li>
+        <li>1 free expert review</li>
+      </ul>
+      <a href="#" class="p-btn" onclick="handlePurchase('10pack')">Buy 10-pack</a>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:1.5rem;font-size:13px;color:var(--muted);">Want a human expert to review your CV or letter? <a href="#" style="color:var(--ink);font-weight:500;">Expert review — £39</a></p>
+</div>
+</section>
+<footer>
+  <div class="logo" style="font-size:1.1rem"><em>Landed</em></div>
+  <span>© 2025 Landed. Powered by Claude AI.</span>
+  <span>hello@landed.co.uk</span>
+</footer>
+<script>
+let mode='cv',step=0,answers={},uploadedText='',questions=[];
+const cvQuestions=[
+  {id:'upload',step:'Optional start',label:'Do you have an existing CV we can improve?',hint:'Upload it and we\'ll use it as a foundation. Or skip to build from scratch.',type:'upload'},
+  {id:'name',step:'About you',label:'What\'s your full name?',hint:'',type:'text',placeholder:'e.g. Sarah Johnson'},
+  {id:'target_role',step:'Target role',label:'What role are you applying for?',hint:'Be specific — the more precise, the more tailored your CV will be.',type:'text',placeholder:'e.g. Senior Marketing Manager, NHS Band 7 Nurse, Fintech Software Engineer'},
+  {id:'experience_years',step:'Experience level',label:'How many years of relevant work experience do you have?',hint:'',type:'options',options:['Less than 1 year','1–3 years','3–7 years','7–15 years','15+ years']},
+  {id:'current_role',step:'Current position',label:'What is your most recent job title and employer?',hint:'Tell us naturally — no need to format it.',type:'text',placeholder:'e.g. Marketing Executive at Tesco, or Freelance Graphic Designer for the past 3 years'},
+  {id:'proudest',step:'Best achievement',label:'What\'s your proudest professional achievement? Numbers help.',hint:'This is the most important question. What impact did you have? Revenue grown, team size, % improvement, cost saved, project delivered...',type:'textarea',placeholder:'e.g. Led a rebranding project that grew sign-ups by 34% in 6 months. Managed a cross-functional team of 8...'},
+  {id:'other_experience',step:'Other experience',label:'Any other relevant roles, projects, or experience?',hint:'Include anything — other jobs, freelance, volunteering, side projects. Don\'t overthink the format.',type:'textarea',placeholder:'e.g. 2 years at HSBC as an analyst (2019–2021), freelance web design for small businesses, comms lead for a local charity...'},
+  {id:'education',step:'Education',label:'Highest level of education and any relevant qualifications?',hint:'',type:'text',placeholder:'e.g. BSc Computer Science, Edinburgh 2018. Also: AWS certified, Google Analytics certified'},
+  {id:'skills',step:'Skills',label:'What are your top skills — tools, software, methodologies?',hint:'Think about what you use every day and what the target role requires.',type:'text',placeholder:'e.g. Python, SQL, Tableau, Agile, stakeholder management, Figma, bid writing'},
+  {id:'tone',step:'Writing style',label:'How should your CV sound?',hint:'This shapes the language and feel of everything.',type:'options',options:['Corporate & formal','Confident & direct','Warm & personable','Creative & distinctive','Technical & precise']}
+];
+const coverQuestions=[
+  {id:'upload',step:'Optional start',label:'Have an existing CV or cover letter we can build from?',hint:'Upload it and we\'ll extract your background automatically.',type:'upload'},
+  {id:'name',step:'About you',label:'Your full name',hint:'',type:'text',placeholder:'e.g. James Okafor'},
+  {id:'company',step:'The company',label:'Which company are you applying to?',hint:'We\'ll draw on everything we know about them — values, culture, recent news — to make the letter feel genuinely written for them.',type:'text',placeholder:'e.g. Goldman Sachs, Unilever, a boutique studio called Pixel & Co'},
+  {id:'role',step:'The role',label:'What role are you applying for?',hint:'',type:'text',placeholder:'e.g. Product Designer, Band 6 Nurse, Junior Copywriter'},
+  {id:'job_desc',step:'Job details',label:'Paste the job description or key requirements.',hint:'The more you give, the more we can mirror their exact language — which is what gets you through ATS filters and catches a recruiter\'s eye.',type:'textarea',placeholder:'Paste the full JD, or summarise: "3+ years in X, must have Y, values Z culture..."'},
+  {id:'why_them',step:'Your motivation',label:'Why do you want to work at this specific company?',hint:'Even one genuine reason makes a huge difference. Vague enthusiasm is easy to spot — specificity isn\'t.',type:'textarea',placeholder:'e.g. Their pivot to B-corp status aligns with values I hold strongly. I\'ve also followed their product thinking closely...'},
+  {id:'best_achievement',step:'Your strongest case',label:'What\'s the single best reason they should hire you? Any evidence?',hint:'Which achievement or skill maps most directly to what they need?',type:'textarea',placeholder:'e.g. I rebuilt our CRM process and cut response time by 60%. That operational mindset is exactly what this role calls for...'},
+  {id:'background',step:'Your background',label:'Brief overview of your experience and background',hint:'',type:'textarea',placeholder:'e.g. 4 years in digital marketing, started as coordinator at a startup, now Senior Manager at a FTSE 250. Strong in data-driven campaigns...'},
+  {id:'tone',step:'Tone',label:'How should this letter sound?',hint:'',type:'options',options:['Professional & formal','Confident & direct','Warm & personable','Passionate & driven','Concise & punchy']}
+];
+function setMode(m){mode=m;document.querySelectorAll('.mode-btn').forEach((b,i)=>b.classList.toggle('active',['cv','cover'][i]===m));startOver();}
+function startOver(){step=0;answers={};uploadedText='';questions=mode==='cv'?cvQuestions:coverQuestions;document.getElementById('output-section').style.display='none';renderStep();}
+function renderStep(){const pct=Math.round((step/questions.length)*100);document.getElementById('progress').style.width=Math.max(pct,5)+'%';document.getElementById('status').textContent='';if(step>=questions.length){showGenerate();return;}const q=questions[step];document.getElementById('q-container').innerHTML=buildQ(q);if(q.type==='upload')setupUpload();}
+function buildQ(q){let inp='';if(q.type==='text'){inp=`<input class="q-input" id="qa" type="text" placeholder="${q.placeholder||''}" value="${answers[q.id]||''}">`;}else if(q.type==='textarea'){inp=`<textarea class="q-input" id="qa" placeholder="${q.placeholder||''}">${answers[q.id]||''}</textarea>`;}else if(q.type==='options'){inp=`<div class="q-options">${q.options.map(o=>`<button class="q-opt${answers[q.id]===o?' sel':''}" onclick="selOpt(this,'${o}')">${o}</button>`).join('')}</div>`;}else if(q.type==='upload'){inp=`<div class="upload-zone" id="uz"><input type="file" accept=".txt,.pdf,.doc,.docx" onchange="handleFile(event)"><svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg><div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>.txt, .pdf, .doc accepted</div></div><div id="fstatus"></div>`;}return `<div class="q-card"><div class="q-step">Step ${step+1} of ${questions.length} — ${q.step}</div><div class="q-label">${q.label}</div>${q.hint?`<div class="q-hint">${q.hint}</div>`:''} ${inp}</div><div class="q-nav">${step>0?`<button class="btn-back" onclick="goBack()">Back</button>`:'<span></span>'}<button class="btn-next" onclick="nextStep()">${step===questions.length-1?'Generate ✦':'Continue'}</button></div>`;}
+function selOpt(el,val){el.closest('.q-options').querySelectorAll('.q-opt').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');answers[questions[step].id]=val;}
+function nextStep(){const q=questions[step];if(q.type==='text'||q.type==='textarea'){const val=document.getElementById('qa')?.value.trim();if(!val&&step>0&&q.id!=='upload'){document.getElementById('status').textContent='Please fill this in — even a brief answer helps.';return;}if(val)answers[q.id]=val;}else if(q.type==='options'&&!answers[q.id]){document.getElementById('status').textContent='Please pick an option to continue.';return;}step++;renderStep();}
+function goBack(){if(step>0){step--;renderStep();}}
+function setupUpload(){const uz=document.getElementById('uz');if(!uz)return;uz.addEventListener('dragover',e=>{e.preventDefault();uz.classList.add('drag');});uz.addEventListener('dragleave',()=>uz.classList.remove('drag'));uz.addEventListener('drop',e=>{e.preventDefault();uz.classList.remove('drag');if(e.dataTransfer.files[0])processFile(e.dataTransfer.files[0]);});}
+function handleFile(e){if(e.target.files[0])processFile(e.target.files[0]);}
+function processFile(file){const s=document.getElementById('fstatus');if(file.type==='text/plain'){const r=new FileReader();r.onload=e=>{uploadedText=e.target.result;s.innerHTML=`<div class="file-attached">✓ &nbsp;<strong>${file.name}</strong> — we'll use this as your starting point</div>`;};r.readAsText(file);}else{uploadedText=`[User uploaded: ${file.name} — extract all relevant career details]`;s.innerHTML=`<div class="file-attached">✓ &nbsp;<strong>${file.name}</strong> attached</div>`;}}
+function showGenerate(){const isCover=mode==='cover';document.getElementById('q-container').innerHTML=`<div class="q-card" style="text-align:center;padding:2rem;"><div style="font-size:13px;color:var(--muted);margin-bottom:6px;">Ready</div><div style="font-family:var(--serif);font-size:1.4rem;margin-bottom:.5rem;">Your ${isCover?'cover letter':'CV'} is ready to write</div><div style="font-size:13px;color:var(--muted);">${isCover&&answers.company?`We'll draw on everything we know about <strong>${answers.company}</strong> to make this letter feel genuinely written for them.`:"We'll craft something concise, achievement-led, and tailored to your target role."}</div></div><p class="gen-note">${isCover?'This is a free preview. Purchase a pack below for your full letters.':'Your CV is completely free.'}</p><button class="gen-btn" onclick="generate()" id="gen-btn">Write my ${isCover?'cover letter':'CV'} →</button>`;document.getElementById('progress').style.width='100%';}
+async function generate(){const btn=document.getElementById('gen-btn');if(btn)btn.disabled=true;const isCover=mode==='cover';document.getElementById('status').textContent=isCover?`Researching ${answers.company||'the company'} and writing your letter…`:'Writing your CV…';try{const res=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:isCover?buildCoverPrompt():buildCVPrompt(),mode,company:answers.company||''})});if(!res.ok)throw new Error();const data=await res.json();showOutput(data.text);}catch(e){document.getElementById('status').textContent='Something went wrong — please try again.';if(btn)btn.disabled=false;}}
+function buildCVPrompt(){const a=answers,up=uploadedText?`\n\nEXISTING CV TO IMPROVE:\n${uploadedText}`:'';return `You are a world-class CV writer with 20 years of experience placing candidates at top companies. Write an exceptional CV that is genuinely better than any competitor tool. Quality is everything.\n\nCANDIDATE:\nName: ${a.name||'Not provided'}\nTarget role: ${a.target_role||'Not specified'}\nExperience level: ${a.experience_years||'Not specified'}\nMost recent role: ${a.current_role||'Not specified'}\nProudest achievement: ${a.proudest||'Not specified'}\nOther experience: ${a.other_experience||'Not specified'}\nEducation: ${a.education||'Not specified'}\nKey skills: ${a.skills||'Not specified'}\nTone: ${a.tone||'Confident & direct'}\n${up}\n\nINSTRUCTIONS:\n1. Open with a punchy 3-line PROFESSIONAL PROFILE. No cliches.\n2. Lead every bullet with a strong action verb. Include numbers and outcomes.\n3. Cut every vague phrase unless backed by evidence.\n4. Tailor ruthlessly to ${a.target_role||'the target role'}.\n5. Sections: PROFESSIONAL PROFILE | EXPERIENCE | EDUCATION | SKILLS\n6. Plain text only. No markdown, no asterisks.\n7. Must feel written by a skilled human career coach, not AI.`;}
+function buildCoverPrompt(){const a=answers,up=uploadedText?`\n\nUPLOADED DOCUMENT:\n${uploadedText}`:'';return `You are a world-class cover letter writer. Write a cover letter for ${a.name||'the candidate'} applying to ${a.company||'the company'} for ${a.role||'the position'}. Must stand out from generic AI letters.\n\nCOMPANY: ${a.company||'Not specified'}\nUse everything you know about ${a.company||'this company'} — values, culture, recent news — to make this feel specifically written for them.\n\nROLE: ${a.role||'Not specified'}\nJOB REQUIREMENTS: ${a.job_desc||'Not specified'}\nWHY THIS COMPANY: ${a.why_them||'Not specified'}\nSTRONGEST CASE: ${a.best_achievement||'Not specified'}\nBACKGROUND: ${a.background||'Not specified'}\nTONE: ${a.tone||'Confident & direct'}\n${up}\n\nSTRUCTURE:\n- Para 1: Compelling hook + specific reason for this company. NOT "I am writing to apply".\n- Para 2: Strongest achievement tied to what this role needs.\n- Para 3: Supporting skills/experience + cultural fit.\n- Para 4: Confident specific close.\n\nRULES: 270-340 words. Mirror job description language. Zero cliches. Plain text only. Must sound like a sharp human wrote it.`;}
+function showOutput(text){document.getElementById('status').textContent='';document.getElementById('q-container').innerHTML='';const s=document.getElementById('output-section');s.style.display='block';document.getElementById('out-label').textContent=mode==='cv'?'Your CV':'Your cover letter';document.getElementById('out-box').textContent=text;if(mode==='cover'){document.getElementById('quality-msg').textContent=`Written using everything we know about ${answers.company||'the company'} and tailored to the role.`;document.getElementById('upsell-box').innerHTML=`<p><strong>Need more letters?</strong> Packs of 5 (£9.99) or 10 (£16.99) — researched and tailored every time.</p><button class="upsell-cta" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View packs</button>`;}s.scrollIntoView({behavior:'smooth',block:'start'});}
+function copyOut(){navigator.clipboard.writeText(document.getElementById('out-box').textContent).then(()=>{document.getElementById('status').textContent='Copied!';setTimeout(()=>document.getElementById('status').textContent='',2000);}).catch(()=>alert('Please select and copy the text manually.'));}
+function handlePurchase(pack){alert(`Add your Stripe payment link for the ${pack} here.`);}
+startOver();
+</script>
+</body>
+</html>
