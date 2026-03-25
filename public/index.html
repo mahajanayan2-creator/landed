@@ -184,7 +184,7 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
         <li>Tone matched to you</li>
         <li>Plain text download</li>
       </ul>
-      <a href="#app" class="p-btn" onclick="setMode('cover')">Get started</a>
+      <a href="#" class="p-btn" onclick="handlePurchase('single')">Buy single letter</a>
     </div>
     <div class="p-card best">
       <div class="best-badge">Most popular</div>
@@ -215,7 +215,7 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
       <a href="#" class="p-btn" onclick="handlePurchase('10pack')">Buy 10-pack</a>
     </div>
   </div>
-  <p style="text-align:center;margin-top:1.5rem;font-size:13px;color:var(--muted);">Want a human expert to review your CV or letter? <a href="#" style="color:var(--ink);font-weight:500;">Expert review — £39</a></p>
+  <p style="text-align:center;margin-top:1.5rem;font-size:13px;color:var(--muted);">Want a human expert to review your CV or letter? <a href="https://buy.stripe.com/7sY4gzdfX1Sl9lR2Ha8AE03" style="color:var(--ink);font-weight:500;">Expert review — £39</a></p>
 </div>
 </section>
 <footer>
@@ -264,7 +264,14 @@ function buildCVPrompt(){const a=answers,up=uploadedText?`\n\nEXISTING CV TO IMP
 function buildCoverPrompt(){const a=answers,up=uploadedText?`\n\nUPLOADED DOCUMENT:\n${uploadedText}`:'';return `You are a world-class cover letter writer. Write a cover letter for ${a.name||'the candidate'} applying to ${a.company||'the company'} for ${a.role||'the position'}. Must stand out from generic AI letters.\n\nCOMPANY: ${a.company||'Not specified'}\nUse everything you know about ${a.company||'this company'} — values, culture, recent news — to make this feel specifically written for them.\n\nROLE: ${a.role||'Not specified'}\nJOB REQUIREMENTS: ${a.job_desc||'Not specified'}\nWHY THIS COMPANY: ${a.why_them||'Not specified'}\nSTRONGEST CASE: ${a.best_achievement||'Not specified'}\nBACKGROUND: ${a.background||'Not specified'}\nTONE: ${a.tone||'Confident & direct'}\n${up}\n\nSTRUCTURE:\n- Para 1: Compelling hook + specific reason for this company. NOT "I am writing to apply".\n- Para 2: Strongest achievement tied to what this role needs.\n- Para 3: Supporting skills/experience + cultural fit.\n- Para 4: Confident specific close.\n\nRULES: 270-340 words. Mirror job description language. Zero cliches. Plain text only. Must sound like a sharp human wrote it.`;}
 function showOutput(text){document.getElementById('status').textContent='';document.getElementById('q-container').innerHTML='';const s=document.getElementById('output-section');s.style.display='block';document.getElementById('out-label').textContent=mode==='cv'?'Your CV':'Your cover letter';document.getElementById('out-box').textContent=text;if(mode==='cover'){document.getElementById('quality-msg').textContent=`Written using everything we know about ${answers.company||'the company'} and tailored to the role.`;document.getElementById('upsell-box').innerHTML=`<p><strong>Need more letters?</strong> Packs of 5 (£9.99) or 10 (£16.99) — researched and tailored every time.</p><button class="upsell-cta" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View packs</button>`;}s.scrollIntoView({behavior:'smooth',block:'start'});}
 function copyOut(){navigator.clipboard.writeText(document.getElementById('out-box').textContent).then(()=>{document.getElementById('status').textContent='Copied!';setTimeout(()=>document.getElementById('status').textContent='',2000);}).catch(()=>alert('Please select and copy the text manually.'));}
-function handlePurchase(pack){alert(`Add your Stripe payment link for the ${pack} here.`);}
+function handlePurchase(pack){
+  const links={
+    'single':'https://buy.stripe.com/3cIaEX6Rz54x2Xtgy08AE00',
+    '5pack':'https://buy.stripe.com/bJe4gz7VD40t0PldlO8AE01',
+    '10pack':'https://buy.stripe.com/3cI7sL7VD40t0PlepS8AE02'
+  };
+  window.open(links[pack],'_blank');
+}
 startOver();
 </script>
 </body>
