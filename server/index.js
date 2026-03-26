@@ -65,20 +65,77 @@ app.post('/api/generate', async (req, res) => {
   try {
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-    const message = await client.messages.create({
+    const systemPrompt = 'You are an elite career writer with 20 years of experience. You produce genuinely exceptional, human-quality CVs and cover letters that are better than any competitor tool. You are brutally honest in your self-assessment and never settle for mediocre output. Quality, specificity, and impact are everything.';
+
+    // ── STEP 1: Write first draft ──────────────────────────────────────────────
+    const draft1 = await client.messages.create({
       model: 'claude-opus-4-5',
       max_tokens: 2000,
-      system: 'You are an elite career writer. Produce genuinely exceptional, human-quality CVs and cover letters that are better than any competitor tool. Prioritise quality, specificity, and impact. Never produce generic filler. Every sentence must earn its place.',
+      system: systemPrompt,
       messages: [{ role: 'user', content: prompt }]
     });
 
-    const text = message.content
-      .filter(block => block.type === 'text')
-      .map(block => block.text)
+    let currentDraft = draft1.content
+      .filter(b => b.type === 'text')
+      .map(b => b.text)
       .join('\n')
       .trim();
 
-    if (!text) throw new Error('Empty response');
+    if (!currentDraft) throw new Error('Empty response');
+
+    // ── STEP 2: Self-critique loop — repeat until score is 9.5/10 or above ────
+    let score = 0;
+    let iterations = 0;
+    const maxIterations = 3;
+
+    while (score < 9.5 && iterations < maxIterations) {
+      const critiquePrompt = `You wrote the following ${mode === 'cover' ? 'cover letter' : 'CV'}. Now critique it with brutal honesty as if you were a top recruiter at a FTSE 100 company who has seen thousands of applications.
+
+CURRENT DRAFT:
+${currentDraft}
+
+CRITIQUE INSTRUCTIONS:
+1. Score it out of 10 — be harsh. A 10 means any employer would be immediately impressed. Most first drafts are 6-7.
+2. List every weakness, vague phrase, missed opportunity, or cliché
+3. Identify what's missing that would make it truly exceptional
+4. Then rewrite it completely, fixing every single issue you identified
+5. The rewrite must be noticeably better — not just slightly tweaked
+
+Respond in this exact format:
+SCORE: [X/10]
+WEAKNESSES:
+[list every weakness]
+IMPROVED VERSION:
+[the full rewritten ${mode === 'cover' ? 'cover letter' : 'CV'} — plain text only, no markdown]`;
+
+      const critiqueResponse = await client.messages.create({
+        model: 'claude-opus-4-5',
+        max_tokens: 3000,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: critiquePrompt }]
+      });
+
+      const critiqueText = critiqueResponse.content
+        .filter(b => b.type === 'text')
+        .map(b => b.text)
+        .join('\n')
+        .trim();
+
+      // Extract score
+      const scoreMatch = critiqueText.match(/SCORE:\s*(\d+(?:\.\d+)?)\s*\/\s*10/i);
+      score = scoreMatch ? parseFloat(scoreMatch[1]) : 0;
+
+      // Extract improved version
+      const improvedMatch = critiqueText.match(/IMPROVED VERSION:\s*([\s\S]+)$/i);
+      if (improvedMatch && improvedMatch[1].trim().length > 100) {
+        currentDraft = improvedMatch[1].trim();
+      }
+
+      iterations++;
+      console.log(`Iteration ${iterations}: score ${score}/10`);
+    }
+
+    const text = currentDraft;
 
     // Return remaining credits for cover letters
     if (mode === 'cover' && email) {
